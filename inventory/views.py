@@ -2,9 +2,8 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from .models import Book
 from .forms import BookForm
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
-# Create your views here.
 class InventoryListView(ListView):
     model = Book
     template_name = 'inventory/inventory.html'
@@ -22,4 +21,7 @@ class UpdateBookView(UpdateView):
     template_name = 'inventory/edit_book.html'
     success_url = reverse_lazy('inventory')
 
-        
+class DeleteBookView(DeleteView):    
+    model = Book
+    template_name = 'inventory/delete_book.html'
+    success_url = reverse_lazy('inventory')
